@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="js/scripts.js" defer></script>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <h1>Welcome to the pig-game</h1>
-
     <p>
       a player repeatedly rolls a die until either a 1 is rolled or the player
       decides to "hold": If the player rolls a 1, they score nothing and it
@@ -20,19 +19,22 @@
       points wins.
     </p>
 
-    <form id="formEl">
-      <input type="text" placeholder="Enter your name"/>
-      <button id="btn">Submit</button>
-    </form>
+    <div id="gamePlace">
+      <form id="formEl">
+        <input type="text" placeholder="Enter your name" required />
+        <button id="btn">Submit</button>
+      </form>
 
-  
+      <div id="buttons">
+        <button id="hold">Hold</button>
+        <button id="throw">Throw the dice!</button>
+        <button id="restart">Restart game</button>
+      </div>
 
-    <button id="hold">Hold</button>
-    <button id="throw">Throw the dice!</button>
-    <button id="restart">Restart game</button>
-
-    <p id="p1"></p>
-    <p></p>
-    <p></p>
+      <p id="p1"></p>
+      <p></p>
+      <p></p>
+      <p></p>
+    </div>
   </body>
 </html>

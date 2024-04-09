@@ -1,26 +1,27 @@
-const holdBtn = document.querySelector("#hold");
-const throwBtn = document.querySelector("#throw");
-const nameBtn = document.querySelector("#btn");
-const restartBtn = document.querySelector("#restart");
+let divButtons = (document.getElementById("buttons").style.display = "none");
+const changeHeader = document.querySelector("p");
 const formEl = document.getElementById("formEl");
 
-nameBtn.addEventListener("click", welcomeMessage);
+formEl.addEventListener("submit", startGame);
 
-function welcomeMessage(event) {
+function startGame(event) {
   event.preventDefault();
 
   const enteredName = document.querySelector("input").value;
-  const changeHeader = document.querySelector("p");
 
   formEl.remove();
   changeHeader.textContent = `You are now in-game! Throw the dice ${enteredName}`;
+
+  divButtons = document.getElementById("buttons").style.display = "block";
 }
 
 let roundCounter = 0;
 let totalPoint = 0;
 let rounds = 0;
 
-throwBtn.addEventListener("click", gamePlay);
+const throwBtn = document
+  .querySelector("#throw")
+  .addEventListener("click", gamePlay);
 
 function gamePlay() {
   const dice = Math.ceil(Math.random() * 6);
@@ -30,6 +31,14 @@ function gamePlay() {
     rounds++;
   } else roundCounter += dice;
 
+  const diceRoll = document.querySelectorAll("p").item(4);
+
+  diceRoll.textContent = `You rolled: ${dice}`;
+
+  counterMessages();
+}
+
+function counterMessages() {
   const messageCounter = document.getElementById("p1");
   const messageTotal = document.querySelectorAll("p").item(2);
   const messageRounds = document.querySelectorAll("p").item(3);
@@ -39,26 +48,31 @@ function gamePlay() {
   messageRounds.textContent = `Number of rounds: ${rounds}`;
 }
 
-holdBtn.addEventListener("click", holdGame);
+const holdBtn = document
+  .querySelector("#hold")
+  .addEventListener("click", holdGame);
 
 function holdGame() {
   totalPoint += roundCounter;
   rounds++;
   roundCounter = 0;
 
+  counterMessages();
   checkGame();
-
 }
 
-function checkGame(){
-    if(totalPoint === 100){
-        console.log("win")
-      }else if(totalPoint >= 101){
-        console.log("lost")
-      }
+function checkGame() {
+  if (totalPoint >= 100) {
+    changeHeader.textContent = `Congratualtions you won! it took you ${rounds} rounds
+    to reach a score of ${totalPoint}. Press restart to play again`;
+
+    document.getElementById("hold").disabled = true;
+    document.getElementById("throw").disabled = true;
+  }
 }
 
-
-restartBtn.addEventListener("click", () => {
-  location.reload();
-});
+const restartBtn = document
+  .querySelector("#restart")
+  .addEventListener("click", () => {
+    location.reload();
+  });
