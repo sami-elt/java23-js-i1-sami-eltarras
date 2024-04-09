@@ -1,3 +1,16 @@
-*{
-    text-align: center;
+.div1 {
+    background-color: rgb(197, 227, 227);
+  border: 5px solid;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  text-align: center;
+}
+
+.gamePlace {
+  background-color: rgb(110, 167, 167);
+  border: 5px solid;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
 }

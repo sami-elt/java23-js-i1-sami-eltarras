@@ -1,4 +1,5 @@
 let divButtons = (document.getElementById("buttons").style.display = "none");
+
 const changeHeader = document.querySelector("p");
 const formEl = document.getElementById("formEl");
 
@@ -10,7 +11,7 @@ function startGame(event) {
   const enteredName = document.querySelector("input").value;
 
   formEl.remove();
-  changeHeader.textContent = `You are now in-game! Throw the dice ${enteredName}`;
+  changeHeader.textContent = `You are now in-game ${enteredName}!`;
 
   divButtons = document.getElementById("buttons").style.display = "block";
 }
